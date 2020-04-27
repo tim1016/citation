@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import Cite from "citation-js";
+import { Component, OnInit, NgZone } from "@angular/core";
+const Cite = window.require('citation-js');
 
 @Component({
   selector: "app-root",
@@ -9,15 +9,17 @@ import Cite from "citation-js";
 export class AppComponent implements OnInit {
   title = "citationjs";
 
-  ngOnInit() {
-    let example = new Cite("Q21972834");
+  constructor(private _ngZone: NgZone) {}
 
-    let output = example.format("bibliography", {
+  async ngOnInit() {
+    const example = await Cite.async("Q21972834");
+
+    const output = example.format("bibliography", {
       format: "html",
       template: "apa",
       lang: "en-US",
     });
 
-    console.log(output);
+    document.body.innerHTML = output;
   }
 }
