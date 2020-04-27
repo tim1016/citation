@@ -30,7 +30,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/citation-js/build/citation.js"
+            ]
           },
           "configurations": {
             "production": {
