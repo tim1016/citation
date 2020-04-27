@@ -9,8 +9,6 @@ const Cite = window.require('citation-js');
 export class AppComponent implements OnInit {
   title = "citationjs";
 
-  constructor(private _ngZone: NgZone) {}
-
   async ngOnInit() {
     const example = await Cite.async("Q21972834");
 
